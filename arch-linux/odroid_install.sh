@@ -1,3 +1,5 @@
+# see http://archlinuxarm.org/platforms/armv7/samsung/odroid-xu3
+
 SDX=/dev/mmcblk1
 SDX1=/dev/mmcblk1p1
 
