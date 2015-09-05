@@ -9,8 +9,3 @@ pacman -S mercurial
 pacman -U mercurial-3.3.2-1-armv7h.pkg.tar.xz
 
 pacman -S go
-
-mkdir ~/go
-export GOPATH=~/go
-export PATH=$PATH:~/go/bin
-go get code.google.com/p/go-tour/gotour
