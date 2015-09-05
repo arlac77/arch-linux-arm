@@ -6,8 +6,9 @@ curl -O https://iojs.org/dist/latest/iojs-${VERSION}-linux-armv7l.tar.gz
 
 (
  cd /usr/local
+ rm iojs-${VERSION}-linux-armv7l 
  tar xvfz /tmp/iojs-${VERSION}-linux-armv7l.tar.gz
- ln -s iojs-${VERSION}-linux-armv7l iojs
- ln -s iojs/bin/iojs bin/iojs
+ rm -f iojs && ln -s iojs-${VERSION}-linux-armv7l iojs
+ (cd bin;rm -f iojs && ln -s ../iojs/bin/iojs iojs)
 )
 
