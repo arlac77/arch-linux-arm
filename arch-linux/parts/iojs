@@ -1,0 +1,6 @@
+VERSION=v3.3.0
+
+cd /tmp
+
+curl -O https://iojs.org/dist/latest/iojs-${VERSION}-linux-armv7l.tar.gz
+tar xvfz iojs-${VERSION}-linux-armv7l.tar.gz
