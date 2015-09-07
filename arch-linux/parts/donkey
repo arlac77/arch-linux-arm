@@ -1,0 +1,8 @@
+useradd -U -m donkey
+
+mkdir /home/donkey/.ssh
+cat <<EOF >/home/donkey/.ssh/authorized_keys
+ssh-dss AAAAB3NzaC1kc3MAAACBAM0Djpv9id6FyjAVEl+gnt0Ahgbu9mIVAhRZvvAO8lE4qua6BxZ/eMxx0K6s337Q/m3yC8rwNDJjkpWvAsgcDG2fWpv2vQDLZcS5a4kzUmpDcG/+M4QRN/66Ur3lpXXjzmuz2mFHaULX2ALHcG4jxToJQlNKPklHRce3Zq8g9TU3AAAAFQD2nGOwxJTBzYIC/5H0tCXpJeqyOQAAAIBKjjDtgwtfLp9tpcZgGnbR/goAJt+k2FBmAnaaVTTlQYXtzv1RTor+MNpP917Tf9i0l7+z2ZHIHVc/y8CeeqZY+mXugtlkfeBGg/I43szfmWzzQb67nLJH2BsZGaJBur6apM9FZoBLrzYNPNH7JL/0DKmJGf9UoHK/wwVDg8V+3wAAAIA3AHaJ3GsLKVWW54j8fToQilO4T/csvGOQ1CC8L/U6XLYDV/jbJPrePUyPs5zWJ3pfpdgREst0hIycV9JfFo6rUnQODo+uAvi9wrczPCyJ8DJjRyFexTYq0UjVwwZnkg2iLRZRfD7squViEHKcwabDX/6F3/vsnR7ug/3LiOciFA== markus@sc.mf.de
+EOF
+
+chown -R donkey:donkey /home/donkey
