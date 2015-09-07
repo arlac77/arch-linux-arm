@@ -1,0 +1,14 @@
+VERSION=v4.0.0-rc.2
+NAME=node
+
+cd /tmp
+
+curl -O https://nodejs.org/download/rc/${VERSION}/${NAME}-${VERSION}-linux-armv7l.tar.gz
+
+(
+ cd /usr/local
+ rm ${NAME}-${VERSION}-linux-armv7l
+ tar xvfz /tmp/${NAME}-${VERSION}-linux-armv7l.tar.gz
+ rm -f ${NAME} && ln -s ${NAME}-${VERSION}-linux-armv7l ${NAME}
+ (cd bin;rm -f ${NAME} && ln -s ../${NAME}/bin/${NAME} ${NAME})
+)
