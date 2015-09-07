@@ -1,5 +1,5 @@
 
-export GOPATH=/tmp/go
+export GOPATH=~/go
 export PATH=$PATH:~/go/bin
 
 mkdir -p $GOPATH
@@ -11,5 +11,4 @@ mkdir -p $WD
  cd $WD
  git clone https://github.com/hashicorp/consul.git .
  make
-) 
-
+)
