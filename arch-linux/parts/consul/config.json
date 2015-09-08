@@ -1,0 +1,10 @@
+{
+    "bootstrap": true,
+    "server": true,
+    "datacenter": "MFC1",
+    "data_dir": "/var/consul",
+    "encrypt": "psv7RYXcgUfLDPY3XLVuBQ==",
+    "log_level": "INFO",
+    "enable_syslog": true,
+    "start_join": ["192.0.2.2", "192.0.2.3"]
+}
