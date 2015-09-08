@@ -1,13 +1,15 @@
 [Unit]
-Description=service discovery
-After=syslog.target network.target
-
+Description=consul agent
+Requires=network-online.target
+After=network-online.target
 [Service]
-Type=forking
-PIDFile=/srv/http/run/nginx.pid
-ExecStart=/usr/bin/chroot --userspec=consul:consul /srv/consul /usr/bin/consul -pid-file /run/consul.pid
-ExecReload=/usr/bin/chroot --userspec=consul:consul /srv/consul /usr/bin/consul -pid-file /run/consul.pid
-ExecStop=/usr/bin/chroot --userspec=consul:consul /srv/consul /usr/bin/consul -pid-file /run/consul.pid
-
+#EnvironmentFile=-/etc/sysconfig/consul
+Environment=GOMAXPROCS=2
+Restart=on-failure
+User=consul
+WorkingDirectory=/var/consul
+ExecStart=/usr/sbin/consul agent -config-dir=/etc/consul.d
+ExecReload=/bin/kill -HUP $MAINPID
+KillSignal=SIGINT
 [Install]
 WantedBy=multi-user.target
