@@ -1,4 +1,4 @@
-VERSION=v4.0.0-rc.2
+VERSION=v4.0.0-rc.5
 NAME=node
 
 cd /tmp
