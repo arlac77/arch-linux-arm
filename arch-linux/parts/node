@@ -1,13 +1,14 @@
 VERSION=v4.1.0
 NAME=node
+ARCH=linux-armv7
 cd /tmp
 
-curl --next -O https://nodejs.org/dist/latest/${NAME}-${VERSION}-linux-armv7.tar.gz
+curl --next -O https://nodejs.org/dist/latest/${NAME}-${VERSION}-${ARCH}.tar.gz
 
 (
  cd /usr/local
- #rm ${NAME}-${VERSION}-linux-armv7l
- tar xvfz /tmp/${NAME}-${VERSION}-linux-armv7l.tar.gz
- rm -f ${NAME} && ln -s ${NAME}-${VERSION}-linux-armv7l ${NAME}
+ #rm ${NAME}-${VERSION}-${ARCH}
+ tar xvfz /tmp/${NAME}-${VERSION}-${ARCH}.tar.gz
+ rm -f ${NAME} && ln -s ${NAME}-${VERSION}-${ARCH} ${NAME}
  (cd bin;rm -f ${NAME} && ln -s ../${NAME}/bin/${NAME} ${NAME})
 )
