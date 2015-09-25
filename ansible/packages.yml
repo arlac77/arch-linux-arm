@@ -1,0 +1,15 @@
+---
+- hosts: all
+  remote_user: root
+
+  tasks:
+  - pacman: pkg=btrfs-progs state=latest
+  - pacman: pkg=ansible state=latest
+  - pacman: pkg=git state=latest
+  - pacman: pkg=llvm state=latest
+  - pacman: pkg=clang state=latest
+  - pacman: pkg=nodejs state=latest
+  - pacman: pkg=npm state=latest
+  - pacman: pkg=go state=latest
+  - group: name=donkey
+  - user: name=donkey comment="donkey" group=donkey createhome=yes
