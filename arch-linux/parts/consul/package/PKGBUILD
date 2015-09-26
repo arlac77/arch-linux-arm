@@ -41,9 +41,13 @@ build() {
 }
 
 package() {
-  cp -pa $srcdir/../support/* $pkgdir
-  mkdir -p $pkgdir/var/consul
-  mkdir -p $pkgdir/usr/bin
-  cp -p $srcdir/src/github.com/hashicorp/consul/bin/consul $pkgdir/usr/bin
-  chown -R consul:consul $pkgdir/var/consul $pkgdir/etc/consul
+  install -g consul -o consul -d $pkgdir/var/consul $pkgdir/usr/bin 
+  install -T $srcdir/src/github.com/hashicorp/consul/bin/consul $pkgdir/usr/bin/consul
+
+  cd $srcdir/../support
+  find . -type f| while read f; do
+    d=$(dirname $f)
+    install -g consul -o consul -d $pkgdir/$d 
+    install -g consul -o consul -T $srcdir/../support/$f $pkgdir/$f
+  done
 }
