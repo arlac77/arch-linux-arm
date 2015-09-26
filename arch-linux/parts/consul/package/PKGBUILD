@@ -1,0 +1,49 @@
+# Maintainer: Your Name <markus.felten@gmx.de>
+pkgname=consul
+pkgrel=1
+pkgver() {
+  cd "$pkgname"
+  git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+epoch=
+pkgdesc=""
+arch=('x86_64' 'i686' 'armv7h')
+url="http://consul.io/"
+license=('Mozilla Public License, version 2.0')
+groups=()
+depends=()
+makedepends=('go' 'git')
+#checkdepends=()
+optdepends=()
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=()
+install=
+changelog=
+source=(${pkgname}::git+https://github.com/hashicorp/consul.git#tag=v0.5.2)
+noextract=()
+md5sums=('SKIP')
+validpgpkeys=()
+_gourl=github.com/hashicorp/consul.git
+
+build() {
+  export GOPATH=$srcdir
+  export PATH=$PATH:$GOPATH/bin
+  echo "*** $GOPATH ***"
+  cd $srcdir
+  WD=src/github.com/hashicorp
+  mkdir -p $WD
+  rm -rf $WD/consul
+  mv consul $WD/consul
+  cd $WD/consul
+  make
+}
+
+package() {
+  echo "INSTALL..."
+  mkdir -p $pkgdir/usr/bin
+  cp -p $srcdir/src/github.com/hashicorp/consul/bin/consul $pkgdir/usr/bin
+}
