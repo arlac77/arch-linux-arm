@@ -44,6 +44,7 @@ build() {
 package() {
   cp -pa pkg $pkgdir
   mkdir -p $pkgdir/var/consul
-  mkdir -p $pkgdir/usr/sbin
-  cp -p $srcdir/src/github.com/hashicorp/consul/bin/consul $pkgdir/usr/sbin
+  mkdir -p $pkgdir/usr/bin
+  cp -p $srcdir/src/github.com/hashicorp/consul/bin/consul $pkgdir/usr/bin
+  chown -R consul:consul $pkgdir/var/consul $pkgdir/etc/consul
 }
