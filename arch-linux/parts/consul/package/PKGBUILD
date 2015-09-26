@@ -27,7 +27,6 @@ source=(${pkgname}::git+https://github.com/hashicorp/consul.git#tag=v0.5.2)
 noextract=()
 md5sums=('SKIP')
 validpgpkeys=()
-_gourl=github.com/hashicorp/consul.git
 
 build() {
   export GOPATH=$srcdir
@@ -42,7 +41,7 @@ build() {
 }
 
 package() {
-  cp -pa pkg $pkgdir
+  cp -pa $srcdir/../support/* $pkgdir
   mkdir -p $pkgdir/var/consul
   mkdir -p $pkgdir/usr/bin
   cp -p $srcdir/src/github.com/hashicorp/consul/bin/consul $pkgdir/usr/bin
