@@ -1,9 +1,4 @@
 pacman -Syu
-pacman -S btrfs-progs
-pacman -S git
-pacman -S llvm
-pacman -S clang
-pacman -S nodejs
 pacman -S mercurial
 pacman -U mercurial-3.3.2-1-armv7h.pkg.tar.xz
 

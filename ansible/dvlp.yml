@@ -1,0 +1,14 @@
+---
+- hosts: all
+  remote_user: root
+
+  tasks:
+  - pacman: pkg=git state=latest
+  - pacman: pkg=llvm state=latest
+  - pacman: pkg=clang state=latest
+  - pacman: pkg=go state=latest
+  - pacman: pkg=fakeroot state=latest
+  - pacman: pkg=libxslt state=latest
+  - pacman: pkg=gd state=latest
+  - pacman: pkg=geoip state=latest
+  - pacman: pkg=geoip-database state=latest
