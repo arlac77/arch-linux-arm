@@ -4,6 +4,9 @@
 
   tasks:
   - authorized_key: user=root key="{{ lookup('file', '/Users/markus/.ssh/id_dsa.pub') }}"
+  - lineinfile: dest=/etc/ssh/sshd_config state=present insertafter="^# Authentication" line="PermitRootLogin yes"
+  - lineinfile: dest=/etc/ssh/sshd_config state=present insertafter="^#PubkeyAuthentication" line="PubkeyAcceptedKeyTypes +ssh-dss"
+  - lineinfile: dest=/etc/ssh/ssh_config state=present line="PubkeyAcceptedKeyTypes +ssh-dss"
   - pacman: pkg=btrfs-progs state=latest
   - pacman: pkg=ansible state=latest
   - pacman: pkg=nodejs state=latest
