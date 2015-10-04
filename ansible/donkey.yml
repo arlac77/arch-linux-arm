@@ -6,3 +6,4 @@
   - group: name=donkey
   - user: name=donkey comment="donkey" group=donkey createhome=yes
   - authorized_key: user=donkey key="{{ lookup('file', '/Users/markus/.ssh/id_dsa.pub') }}"
+  - service: name=kronos state=started

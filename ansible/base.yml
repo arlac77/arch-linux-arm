@@ -8,3 +8,5 @@
   - pacman: pkg=ansible state=latest
   - pacman: pkg=nodejs state=latest
   - pacman: pkg=npm state=latest
+  - pacman: pkg=nginx state=latest
+  - service: name=nginx state=started
