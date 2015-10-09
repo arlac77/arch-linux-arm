@@ -1,6 +1,5 @@
 ---
-- hosts: all
-  remote_user: root
+- hosts: odroids
 
   tasks:
   - pacman: pkg=git state=latest
