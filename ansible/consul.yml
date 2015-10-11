@@ -1,5 +1,8 @@
+# ansible-galaxy install savagegus.consul
 ---
 - hosts: odroids
 
   tasks:
+  #  -consul--1-armv7h.pkg.tar.xz
+  - pacman: pkg=nginx state=latest
   - service: name=consul state=started

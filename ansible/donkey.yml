@@ -3,6 +3,6 @@
 
   tasks:
   - group: name=donkey
-  - user: name=donkey comment="donkey" group=donkey createhome=yes
-  - authorized_key: user=donkey key="{{ lookup('file', '/Users/markus/.ssh/id_dsa.pub') }}"
+  - user: name=donkey comment="donkey" group=donkey createhome=yes shell=/bin/bash
+  - authorized_key: user=donkey key="{{ lookup('file', '/Users/markus/.ssh/id_rsa.pub') }}"
   - service: name=kronos state=started

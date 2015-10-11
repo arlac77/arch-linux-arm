@@ -1,2 +1,9 @@
-[ordoids]
+[odroids]
 10.0.0.4 ansible_ssh_user=root
+10.0.0.7 ansible_ssh_user=root
+10.0.0.9 ansible_ssh_user=root
+
+[development]
+10.0.0.4 ansible_ssh_user=root
+
+[off]
