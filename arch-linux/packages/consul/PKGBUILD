@@ -1,4 +1,4 @@
-# Maintainer: Your Name <markus.felten@gmx.de>
+# Maintainer: Markus Felten <markus.felten@gmx.de>
 pkgname=consul
 pkgrel=1
 pkgver() {
@@ -41,13 +41,13 @@ build() {
 }
 
 package() {
-  install -g consul -o consul -d $pkgdir/var/consul $pkgdir/usr/bin 
+  install -g consul -o consul -d $pkgdir/var/consul $pkgdir/usr/bin
   install -T $srcdir/src/github.com/hashicorp/consul/bin/consul $pkgdir/usr/bin/consul
 
   cd $srcdir/../support
   find . -type f| while read f; do
     d=$(dirname $f)
-    install -g consul -o consul -d $pkgdir/$d 
+    install -g consul -o consul -d $pkgdir/$d
     install -g consul -o consul -T $srcdir/../support/$f $pkgdir/$f
   done
 }
