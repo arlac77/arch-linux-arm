@@ -1,5 +1,5 @@
 {
-  "datacenter": "mf",
+  "datacenter": "odroid",
   "data_dir": "/var/consul",
   "encrypt": "UfaskhB2ktXbvHdtquSKFg==",
   "log_level": "INFO",

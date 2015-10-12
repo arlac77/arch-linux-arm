@@ -3,6 +3,9 @@
 - hosts: odroids
 
   tasks:
-  #  -consul--1-armv7h.pkg.tar.xz
-  - pacman: pkg=nginx state=latest
+  - group: name=consul
+  - user: name=consul comment="consul" group=consul home=/var/consul createhome=yes
+  - file: path=/var/consul state=directory mode=0755 owner=consul group=consul
+  - file: path=/etc/consul state=directory mode=0755 owner=consul group=consul
+  - pacman: pkg=consul state=latest
   - service: name=consul state=started
