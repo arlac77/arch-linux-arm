@@ -3,6 +3,9 @@
 SDX=/dev/mmcblk1
 SDX1=/dev/mmcblk1p1
 
+SDX=/dev/mmcblk0
+SDX1=/dev/mmcblk0p1
+
 umount $SDX1
 
 dd if=/dev/zero of=$SDX bs=1M count=8

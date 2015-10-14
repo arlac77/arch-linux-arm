@@ -1,9 +1,9 @@
 [odroids]
 10.0.6.1 ansible_ssh_user=root
-10.0.6.3 ansible_ssh_user=root
-
 10.0.6.2 ansible_ssh_user=root
-10.0.6.4 ansible_ssh_user=root # arch-linux=28:37:37:41:c:40 unbuntu=00:1e:06:30:0e:dd
+10.0.6.3 ansible_ssh_user=root
+10.0.6.4 ansible_ssh_user=root
+10.0.6.5 ansible_ssh_user=root
 
 
 [development]
@@ -13,6 +13,5 @@
 10.0.0.4 ansible_ssh_user=root
 10.0.0.7 ansible_ssh_user=root
 10.0.0.9 ansible_ssh_user=root
-10.0.6.5 ansible_ssh_user=root
 10.0.6.6 ansible_ssh_user=root
 10.0.6.7 ansible_ssh_user=root
