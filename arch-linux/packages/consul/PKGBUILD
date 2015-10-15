@@ -1,11 +1,12 @@
 # Maintainer: Markus Felten <markus.felten@gmx.de>
 pkgname=consul
 pkgrel=1
-pkgver() {
-  cd "$pkgname"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
+#pkgver() {
+#  cd "$pkgname"
+#  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+#   return "0.5.2"
+#}
+pkgver="0.5.2"
 epoch=
 pkgdesc="consul"
 arch=('x86_64' 'i686' 'armv7h')
@@ -23,7 +24,7 @@ backup=()
 options=()
 install=
 changelog=
-source=(${pkgname}::git+https://github.com/hashicorp/consul.git#tag=v0.5.2)
+source=(${pkgname}::git+https://github.com/hashicorp/consul.git#tag=v${pkgver})
 noextract=()
 md5sums=('SKIP')
 validpgpkeys=()
