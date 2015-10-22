@@ -1,6 +1,8 @@
 {
+  "server": true,
   "datacenter": "odroid",
   "data_dir": "/var/consul",
+  "bootstrap_expect": 3,
   "encrypt": "UfaskhB2ktXbvHdtquSKFg==",
   "log_level": "INFO",
   "enable_syslog": true
