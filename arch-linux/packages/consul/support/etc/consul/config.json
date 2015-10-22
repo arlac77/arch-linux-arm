@@ -3,6 +3,7 @@
   "datacenter": "odroid",
   "data_dir": "/var/consul",
   "bootstrap_expect": 3,
+  "retry_join": ["10.0.6.1", "10.0.6.2", "10.0.6.3", "10.0.6.4", "10.0.6.5", "10.0.6.6", "10.0.6.7"],
   "encrypt": "UfaskhB2ktXbvHdtquSKFg==",
   "log_level": "INFO",
   "enable_syslog": true
