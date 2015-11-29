@@ -14,6 +14,7 @@
               section=custom
               option=Server
               value="http://mfelten.de/arch-linux/packages/"
+  - pacman: update_cache=yes
   - pacman: pkg=btrfs-progs state=latest
   - pacman: pkg=ansible state=latest
   - pacman: pkg=nodejs state=latest
