@@ -3,3 +3,7 @@
 
 http://odroid.com/dokuwiki/doku.php?id=en:xu3_bootmode_configuration [Boot mode configuration]
 http://archlinuxarm.org/platforms/armv7/samsung/odroid-xu3 [archlinux ODROID-XU3 Home]
+
+
+TODO:
+  - one step image creation
