@@ -3,6 +3,8 @@
 - hosts: odroids
 
   tasks:
+  - service: name=consul state=stopped
+  - file: dest=/var/consul state=absent
   - group: name=consul
   - user: name=consul comment="consul" group=consul home=/var/consul createhome=yes
   - file: path=/var/consul state=directory mode=0755 owner=consul group=consul
