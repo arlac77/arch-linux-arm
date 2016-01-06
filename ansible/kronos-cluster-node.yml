@@ -7,6 +7,7 @@
   - authorized_key: user=kronos key="{{ lookup('file', '/Users/markus/.ssh/id_rsa.pub') }}"
   - pacman: pkg=kronos-cluster-node state=latest
   - command: systemctl daemon-reload
+  - service: name=kronos-cluster-node state=stopped
   - service: name=kronos-cluster-node state=started
 
 #  - file: dest=/etc/systemd/system/multi-user.target.wants/kronos.service src=/usr/lib/systemd/kronos.service owner=root group=root state=link
