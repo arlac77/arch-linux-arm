@@ -7,6 +7,7 @@
   - pacman: pkg=clang state=latest
   - pacman: pkg=go state=latest
   - pacman: pkg=zip state=latest
+  - pacman: pkg=unzip state=latest
   - pacman: pkg=fakeroot state=latest
   - pacman: pkg=libxslt state=latest
   - pacman: pkg=gd state=latest
