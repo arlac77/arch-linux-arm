@@ -24,3 +24,5 @@ do
 done
 
 exit
+curl http://localhost:8500/v1/agent/services?pretty
+journalctl -u kronos-cluster-node
