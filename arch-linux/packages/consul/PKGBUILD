@@ -1,12 +1,7 @@
 # Maintainer: Markus Felten <markus.felten@gmx.de>
 pkgname=consul
 pkgrel=1
-#pkgver() {
-#  cd "$pkgname"
-#  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-#   return "0.5.2"
-#}
-pkgver="0.6.0"
+pkgver=0.6.3
 epoch=
 pkgdesc="consul"
 arch=('x86_64' 'i686' 'armv7h')
@@ -24,12 +19,19 @@ backup=()
 options=()
 install=
 changelog=
-source=(${pkgname}::git+https://github.com/hashicorp/consul.git#tag=v${pkgver})
+#source=(${pkgname}::git+https://github.com/hashicorp/consul.git#tag=v${pkgver})
+#source=(${pkgname}::git+https://github.com/hashicorp/consul.git)
+source=(${pkgname}::https://releases.hashicorp.com/consul/${pkgver}/consul_${pkgver}_linux_arm.zip)
 noextract=()
 md5sums=('SKIP')
 validpgpkeys=()
 
-build() {
+_pkgver() {
+  cd "$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+_duild() {
   export GOPATH=$srcdir
   export PATH=$PATH:$GOPATH/bin
   cd $srcdir
@@ -43,7 +45,7 @@ build() {
 
 package() {
   install -g consul -o consul -d $pkgdir/var/consul $pkgdir/usr/bin
-  install -T $srcdir/src/github.com/hashicorp/consul/bin/consul $pkgdir/usr/bin/consul
+  install -T consul $pkgdir/usr/bin/consul
 
   cd $srcdir/../support
   find . -type f| while read f; do
