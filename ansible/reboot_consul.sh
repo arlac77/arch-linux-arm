@@ -15,12 +15,14 @@ done
 
 for i in $servers
 do
-  ssh -l root -A $i "consul info|grep state"
-done
-for i in $servers
-do
+  ssh -l root -A $i "systemctl daemon-reload"
   ssh -l root -A $i "systemctl stop kronos-cluster-node"
   ssh -l root -A $i "systemctl start kronos-cluster-node"
+done
+
+for i in $servers
+do
+  ssh -l root -A $i "consul info|grep state"
 done
 
 exit
