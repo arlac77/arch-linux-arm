@@ -2,6 +2,7 @@
 
 servers="odroid1 odroid2 odroid3 odroid4 odroid5"
 
+
 for i in $servers
 do
   ssh -l root -A $i "systemctl stop consul"
