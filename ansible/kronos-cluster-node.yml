@@ -1,5 +1,5 @@
 ---
-- hosts: odroids
+- hosts: odroids pines
 
   tasks:
   - group: name=kronos
