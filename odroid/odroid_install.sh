@@ -8,7 +8,7 @@ SDX1=/dev/mmcblk1p1
 
 umount $SDX1
 
-dd if=/dev/zero of=$SDX bs=1M count=8
+dd if=/dev/zero of=$SDX bs=1M count=16
 
 cat >mmcblk1.format <<EOF
 label: dos
@@ -28,8 +28,9 @@ fdisk $SDX
 # Write the partition table and exit by typing w.
 
 cd /tmp
-mkfs.ext4 $SDX1
 mkdir -p root
+
+mkfs.ext4 $SDX1
 mount $SDX1 root
 
 
@@ -38,7 +39,8 @@ curl -O http://os.archlinuxarm.org/os/ArchLinuxARM-odroid-xu3-latest.tar.gz
 tar -xzvf ArchLinuxARM-odroid-xu3-latest.tar.gz -C root
 
 (cd root
- tar cvfp - /etc/systemd/network/eth0.network /root/.ssh /etc/ssh/sshd_config | tar xvfp -
+ tar cvfp - /etc/systemd/network/eth0.network /root/.ssh /etc/ssh/sshd_config /etc/ssh/ssh_host_* | tar xvfp -
+ cd usr/bin;ln -s python2.7 python
 )
 
 cd root/boot

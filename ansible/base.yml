@@ -1,5 +1,5 @@
 ---
-- hosts: odroids
+- hosts: odroids pines
 
   tasks:
   - authorized_key: user=root key="{{ lookup('file', '/Users/markus/.ssh/id_rsa.pub') }}"
