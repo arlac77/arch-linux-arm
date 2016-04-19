@@ -1,4 +1,5 @@
 [odroids]
+10.0.6.0 ansible_ssh_user=root
 10.0.6.1 ansible_ssh_user=root
 10.0.6.2 ansible_ssh_user=root
 10.0.6.3 ansible_ssh_user=root
@@ -7,7 +8,7 @@
 
 
 [development]
-10.0.6.1 ansible_ssh_user=root
+10.0.6.0 ansible_ssh_user=root
 
 [pines]
 10.0.7.1 ansible_ssh_user=root

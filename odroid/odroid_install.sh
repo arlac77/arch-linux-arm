@@ -37,6 +37,9 @@ curl -O http://os.archlinuxarm.org/os/ArchLinuxARM-odroid-xu3-latest.tar.gz
 #curl -O http://nl2.mirror.archlinuxarm.org/os/ArchLinuxARM-odroid-xu3-latest.tar.gz
 tar -xzvf ArchLinuxARM-odroid-xu3-latest.tar.gz -C root
 
+(cd root
+ tar cvfp - /etc/systemd/network/eth0.network /root/.ssh /etc/ssh/sshd_config | tar xvfp -
+)
 
 cd root/boot
 ./sd_fusing.sh $SDX
