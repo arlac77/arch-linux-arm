@@ -13,22 +13,19 @@ umount $SDX1
 
 dd if=/dev/zero of=$SDX bs=1M count=16
 
-cat >mmcblk1.format <<EOF
-label: dos
-label-id: 0x3ce7bafd
-device: /dev/mmcblk1
-unit: sectors
+fdisk $SDX << __EOF__ >> /dev/null
+o
+p
+n
+p
+1
 
-/dev/mmcblk1p1 : start=        2048, size=    15267840, type=83
-EOF
 
-# o
-# p
-# n
-# 1
-#
+w
+__EOF__
 
-fdisk $SDX
+
+#fdisk $SDX
 
 # At the fdisk prompt, create the new partitions:
 # Type o. This will clear out any partitions on the drive.
