@@ -1,5 +1,8 @@
 # see http://archlinuxarm.org/platforms/armv7/samsung/odroid-xu3
 
+PLATFORM=odroid-xu3
+PLATFORM=odroid-c2
+
 SDX=/dev/mmcblk1
 SDX1=/dev/mmcblk1p1
 
@@ -19,6 +22,12 @@ unit: sectors
 /dev/mmcblk1p1 : start=        2048, size=    15267840, type=83
 EOF
 
+# o
+# p
+# n
+# 1
+#
+
 fdisk $SDX
 
 # At the fdisk prompt, create the new partitions:
@@ -34,9 +43,13 @@ mkfs.ext4 $SDX1
 mount $SDX1 root
 
 
-curl -O http://os.archlinuxarm.org/os/ArchLinuxARM-odroid-xu3-latest.tar.gz
+#curl -O http://os.archlinuxarm.org/os/ArchLinuxARM-odroid-xu3-latest.tar.gz
 #curl -O http://nl2.mirror.archlinuxarm.org/os/ArchLinuxARM-odroid-xu3-latest.tar.gz
-tar -xzvf ArchLinuxARM-odroid-xu3-latest.tar.gz -C root
+#curl -O http://archlinuxarm.org/os/ArchLinuxARM-${PLATFORM}-latest.tar.gz
+
+curl -O http://nl2.mirror.archlinuxarm.org/os/ArchLinuxARM-${PLATFORM}-latest.tar.gz
+
+tar -xzvf ArchLinuxARM-${PLATFORM}-latest.tar.gz -C root
 
 (cd root
  tar cvfp - /etc/systemd/network/eth0.network /root/.ssh /etc/ssh/sshd_config /etc/ssh/ssh_host_* | tar xvfp -

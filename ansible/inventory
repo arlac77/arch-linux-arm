@@ -5,11 +5,13 @@
 10.0.6.3 ansible_ssh_user=root
 10.0.6.4 ansible_ssh_user=root
 10.0.6.5 ansible_ssh_user=root
+10.0.8.1 ansible_ssh_user=root
 
 
 [development]
 10.0.6.0 ansible_ssh_user=root
 10.0.7.1 ansible_ssh_user=root
+10.0.8.1 ansible_ssh_user=root
 
 [pines]
 10.0.7.1 ansible_ssh_user=root
