@@ -1,0 +1,7 @@
+---
+- hosts: development
+  become_user: donkey
+
+  tasks:
+  - git: repo=https://github.com/Kronos-Integration/kronos-cluster-node.git dest=/home/donkey/build/kronos_cluster_node
+  - file: path=/home/donkey/build state=directory mode=0755 owner=donkey group=donkey
