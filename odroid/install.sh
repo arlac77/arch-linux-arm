@@ -1,5 +1,6 @@
 # see http://archlinuxarm.org/platforms/armv7/samsung/odroid-xu3
 
+HOSTNAME=odroid11
 PLATFORM=odroid-xu3
 PLATFORM=odroid-c2
 
@@ -51,6 +52,7 @@ tar -xzvf ArchLinuxARM-${PLATFORM}-latest.tar.gz -C root
 (cd root
  tar cvfp - /etc/systemd/network/eth0.network /root/.ssh /etc/ssh/sshd_config /etc/ssh/ssh_host_* | tar xvfp -
  cd usr/bin;ln -s python2.7 python
+ echo $HOSTNAME >etc/hostname
 )
 
 cd root/boot
