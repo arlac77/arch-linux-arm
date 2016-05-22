@@ -2,28 +2,32 @@
 
 servers="odroid1 odroid2 odroid3 odroid4 odroid5 pine1"
 
+instances="i1 i2 i3 i4"
 
-for i in $servers
+for s in $servers
 do
-  ssh -l root -A $i "systemctl stop consul"
-  ssh -l root -A $i "rm -rf /var/consul/*"
+  ssh -l root -A $s "systemctl stop consul"
+  ssh -l root -A $s "rm -rf /var/consul/*"
 done
 
-for i in $servers
+for s in $servers
 do
-  ssh -l root -A $i "systemctl start consul"
+  ssh -l root -A $s "systemctl start consul"
 done
 
-for i in $servers
+for s in $servers
 do
-  ssh -l root -A $i "systemctl daemon-reload"
-  ssh -l root -A $i "systemctl stop kronos-cluster-node"
-  ssh -l root -A $i "systemctl start kronos-cluster-node"
+  ssh -l root -A $s "systemctl daemon-reload"
+  for i in $instances
+  do
+    ssh -l root -A $s "systemctl stop kronos-cluster-node@$i"
+    ssh -l root -A $s "systemctl start kronos-cluster-node@$i"
+  done
 done
 
-for i in $servers
+for s in $servers
 do
-  ssh -l root -A $i "consul info|grep state"
+  ssh -l root -A $s "consul info|grep state"
 done
 
 exit
