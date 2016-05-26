@@ -1,6 +1,6 @@
 #!/bin/sh
 
-servers="odroid1 odroid2 odroid3 odroid4 odroid5 pine1"
+servers="odroid1 odroid2 odroid3 odroid4 odroid5 odroid11 pine1"
 
 instances="i1 i2 i3 i4"
 
@@ -32,4 +32,4 @@ done
 
 exit
 curl http://localhost:8500/v1/agent/services?pretty
-journalctl -u kronos-cluster-node
+journalctl -u kronos-cluster-node@i1
