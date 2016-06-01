@@ -5,6 +5,7 @@
   - pacman: pkg=git state=latest
   - pacman: pkg=llvm state=latest
   - pacman: pkg=clang state=latest
+  - pacman: pkg=make state=latest
   - pacman: pkg=go state=latest
   - pacman: pkg=zip state=latest
   - pacman: pkg=unzip state=latest
