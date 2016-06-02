@@ -1,5 +1,5 @@
 ---
-- hosts: odroids, pines
+- hosts: odroids, pines, vms
 
   tasks:
   - group: name=donkey

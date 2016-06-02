@@ -12,6 +12,10 @@
 10.0.6.0 ansible_ssh_user=root
 10.0.7.1 ansible_ssh_user=root
 10.0.8.1 ansible_ssh_user=root
+10.0.0.12 ansible_ssh_user=root
 
 [pines]
 10.0.7.1 ansible_ssh_user=root
+
+[vms]
+10.0.0.12 ansible_ssh_user=root
