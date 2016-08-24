@@ -1,6 +1,10 @@
 # see http://archlinuxarm.org/platforms/armv7/samsung/odroid-xu3
 
-HOSTNAME=odroid11
+HOSTNAME=odroid1
+IP=10.0.6.1
+MACADDR=0:1e:6:10:06:1
+GATEWAY=10.0.0.2
+
 PLATFORM=odroid-xu3
 PLATFORM=odroid-c2
 
@@ -53,6 +57,15 @@ tar -xzvf ArchLinuxARM-${PLATFORM}-latest.tar.gz -C root
  tar cvfp - /etc/systemd/network/eth0.network /root/.ssh /etc/ssh/sshd_config /etc/ssh/ssh_host_* | tar xvfp -
  cd usr/bin;ln -s python2.7 python
  echo $HOSTNAME >etc/hostname
+ #perl setenv macaddr "$MACADDR" boot/boot.txt
+ cat >etc/systemd/network/eth0.network <<EOF
+[Match]
+Name=eth0
+
+[Network]
+Address=$IP/16
+Gateway=$GATEWAY
+EOF
 )
 
 cd root/boot
