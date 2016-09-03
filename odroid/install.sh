@@ -6,7 +6,7 @@ MACADDR=0:1e:6:10:06:1
 GATEWAY=10.0.0.2
 
 PLATFORM=odroid-xu3
-PLATFORM=odroid-c2
+#PLATFORM=odroid-c2
 
 SDX=/dev/mmcblk1
 SDX1=/dev/mmcblk1p1
@@ -45,17 +45,12 @@ mkfs.ext4 $SDX1
 mount $SDX1 root
 
 
-#curl -O http://os.archlinuxarm.org/os/ArchLinuxARM-odroid-xu3-latest.tar.gz
-#curl -O http://nl2.mirror.archlinuxarm.org/os/ArchLinuxARM-odroid-xu3-latest.tar.gz
-#curl -O http://archlinuxarm.org/os/ArchLinuxARM-${PLATFORM}-latest.tar.gz
-
 curl -O http://nl2.mirror.archlinuxarm.org/os/ArchLinuxARM-${PLATFORM}-latest.tar.gz
 
 tar -xzvf ArchLinuxARM-${PLATFORM}-latest.tar.gz -C root
 
 (cd root
  tar cvfp - /etc/systemd/network/eth0.network /root/.ssh /etc/ssh/sshd_config /etc/ssh/ssh_host_* | tar xvfp -
- cd usr/bin;ln -s python2.7 python
  echo $HOSTNAME >etc/hostname
  #perl setenv macaddr "$MACADDR" boot/boot.txt
  cat >etc/systemd/network/eth0.network <<EOF
@@ -66,6 +61,7 @@ Name=eth0
 Address=$IP/16
 Gateway=$GATEWAY
 EOF
+ cd usr/bin;ln -s python2.7 python
 )
 
 cd root/boot
