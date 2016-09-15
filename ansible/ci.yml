@@ -1,0 +1,11 @@
+---
+- hosts: development
+  become_user: donkey
+
+  tasks:
+  - copy: src=/Users/markus/.ssh/travis_id_rsa dest=/home/donkey/.ssh/id_rsa owner=donkey group=donkey mode=0600
+  - git: repo=https://github.com/Kronos-Integration/kronos-cluster-node.git dest=/home/donkey/build/kronos_cluster_node
+  - file: path=/home/donkey/build state=directory mode=0755 owner=donkey group=donkey
+  - pacman: pkg=cronie state=latest
+  - service: name=cronie.service state=started
+  - cron: name="build kronos_cluster_node" minute="7" hour="11-14" job="cd /home/donkey/build/kronos_cluster_node/pkgbuild && ./build.sh"

@@ -1,5 +1,5 @@
 ---
-- hosts: odroids pines
+- hosts: odroids pines vms
 
   tasks:
   - group: name=kronos
@@ -7,7 +7,10 @@
   - authorized_key: user=kronos key="{{ lookup('file', '/Users/markus/.ssh/id_rsa.pub') }}"
   - pacman: pkg=kronos-cluster-node state=latest
   - command: systemctl daemon-reload
-  - service: name=kronos-cluster-node state=restarted
+  - service: name=kronos-cluster-node@i1 state=restarted
+  - service: name=kronos-cluster-node@i2 state=restarted
+  - service: name=kronos-cluster-node@i3 state=restarted
+  - service: name=kronos-cluster-node@i4 state=restarted
 
 #  - file: dest=/etc/systemd/system/multi-user.target.wants/kronos.service src=/usr/lib/systemd/kronos.service owner=root group=root state=link
 #  - copy: src=kronos.service dest=/usr/lib/systemd/kronos.service owner=root group=root mode=644

@@ -1,6 +1,6 @@
 # ansible-galaxy install savagegus.consul
 ---
-- hosts: odroids
+- hosts: odroids pines vms
 
   tasks:
   - service: name=consul state=stopped

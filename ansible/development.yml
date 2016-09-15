@@ -5,6 +5,7 @@
   - pacman: pkg=git state=latest
   - pacman: pkg=llvm state=latest
   - pacman: pkg=clang state=latest
+  - pacman: pkg=make state=latest
   - pacman: pkg=go state=latest
   - pacman: pkg=zip state=latest
   - pacman: pkg=unzip state=latest
@@ -13,6 +14,3 @@
   - pacman: pkg=gd state=latest
   - pacman: pkg=geoip state=latest
   - pacman: pkg=geoip-database state=latest
-  - git: repo=https://github.com/Kronos-Integration/kronos-cluster-node.git
-          dest=/home/donkey/build/kronos_cluster_node
-  - file: path=/home/donkey/build state=directory mode=0755 owner=donkey group=donkey
