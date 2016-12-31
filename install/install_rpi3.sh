@@ -1,13 +1,50 @@
-mkfs.vfat /dev/sdX1
+SDX=/dev/mmcblk1
+SDX1=/dev/mmcblk1p1
+SDX2=/dev/mmcblk1p2
+
+#SDX=/dev/mmcblk0
+#SDX1=/dev/mmcblk0p1
+
+umount $SDX1
+
+dd if=/dev/zero of=$SDX bs=1M count=16
+
+fdisk $SDX << __EOF__ >> /dev/null
+o
+p
+n
+p
+1
+
++100M
+
+t
+c
+
+n
+p
+2
+
+
+w
+__EOF__
+
+
+
+mkfs.vfat $SDX1
 mkdir boot
-mount /dev/sdX1 boot
+mount $SDX1 boot
 
-mkfs.ext4 /dev/sdX2
+mkfs.ext4 $SDX2
 mkdir root
-mount /dev/sdX2 root
+mount $SDX2 root
 
-wget http://os.archlinuxarm.org/os/ArchLinuxARM-rpi-3-latest.tar.gz
-bsdtar -xpf ArchLinuxARM-rpi-2-latest.tar.gz -C root
+
+PLATFORM=rpi-3
+curl -O http://nl2.mirror.archlinuxarm.org/os/ArchLinuxARM-${PLATFORM}-latest.tar.gz
+
+tar -xzvf ArchLinuxARM-${PLATFORM}-latest.tar.gz -C root
+
 sync
 
 mv root/boot/* boot
