@@ -14,3 +14,4 @@
   - pacman: pkg=gd state=latest
   - pacman: pkg=geoip state=latest
   - pacman: pkg=geoip-database state=latest
+  - pacman: pkg=dosfstools state=latest
