@@ -1,12 +1,19 @@
 # see http://archlinuxarm.org/platforms/armv7/samsung/odroid-xu3
 
-HOSTNAME=odroid1
-IP=10.0.6.1
-MACADDR=0:1e:6:10:06:1
-GATEWAY=10.0.0.2
+HOSTNAME=$1
 
-PLATFORM=odroid-xu3
-#PLATFORM=odroid-c2
+read HOSTNAME IP GATEWAY MACADDR PLATFORM <<< $(grep $HOSTNAME<<EOF
+ordoid1  10.0.6.1  10.0.0.2 0:1e:6:10:06:1  odroid-xu4
+ordoid2  10.0.6.2  10.0.0.2 0:1e:6:10:06:2  odroid-xu4
+ordoid3  10.0.6.3  10.0.0.2 0:1e:6:10:06:3  odroid-xu4
+ordoid4  10.0.6.4  10.0.0.2 0:1e:6:10:06:4  odroid-xu4
+ordoid5  10.0.6.5  10.0.0.2 0:1e:6:10:06:5  odroid-xu4
+ordoid11 10.0.6.11 10.0.0.2 0:1e:6:10:06:11 odroid-c2
+rpi1     10.0.6.21 10.0.0.2 0:1e:6:10:06:21 rpi-3
+EOF
+)
+
+echo $HOSTNAME $IP $GATEWAY $MACADDR $PLATFORM
 
 SDX=/dev/mmcblk1
 SDX1=/dev/mmcblk1p1
