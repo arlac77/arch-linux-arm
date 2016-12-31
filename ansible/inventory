@@ -7,6 +7,8 @@
 10.0.6.5 ansible_ssh_user=root
 10.0.8.1 ansible_ssh_user=root
 
+[rpis]
+10.0.6.31 ansible_ssh_user=root
 
 [development]
 10.0.6.0 ansible_ssh_user=root
