@@ -3,10 +3,8 @@
   "data_dir": "/var/consul",
   "log_level": "INFO",
   "node_name": "rpi1",
+  "bootstrap": false,
   "server": true,
-  "disable_update_check": true,
-  "disable_anonymous_signature": true,
-  "encrypt": "UfaskhB2ktXbvHdtquSKFg==",
   "start_join": ["10.0.6.0",
     "10.0.6.1",
     "10.0.6.2",
@@ -17,6 +15,9 @@
     "10.0.7.21",
     "10.0.6.31"
   ],
+  "disable_update_check": true,
+  "disable_anonymous_signature": true,
+  "encrypt": "UfaskhB2ktXbvHdtquSKFg==",
   "performance": {
     "raft_multiplier": 8
   }
