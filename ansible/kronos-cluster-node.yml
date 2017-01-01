@@ -1,10 +1,10 @@
 ---
-- hosts: odroids pines vms
+- hosts: odroids pines rpis vms
 
   tasks:
   - group: name=kronos
   - user: name=kronos comment="kronos" group=kronos home=/srv/kronos createhome=yes shell=/bin/bash
-  - authorized_key: user=kronos key="{{ lookup('file', '/Users/markus/.ssh/id_rsa.pub') }}"
+  - authorized_key: user=kronos key="{{ lookup('file', '/Users/markus/.ssh/id_ecdsa.pub') }}"
   - pacman: pkg=kronos-cluster-node state=latest
   - command: systemctl daemon-reload
   - service: name=kronos-cluster-node@i1 state=restarted

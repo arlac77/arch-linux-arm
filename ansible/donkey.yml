@@ -4,5 +4,5 @@
   tasks:
   - group: name=donkey
   - user: name=donkey comment="donkey" group=donkey createhome=yes shell=/bin/bash
-  - authorized_key: user=donkey key="{{ lookup('file', '/Users/markus/.ssh/id_rsa.pub') }}"
+  - authorized_key: user=donkey key="{{ lookup('file', '/Users/markus/.ssh/id_ecdsa.pub') }}"
   - service: name=kronos-cluster-node state=started

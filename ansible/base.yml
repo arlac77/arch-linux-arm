@@ -1,11 +1,10 @@
 ---
-- hosts: odroids pines vms
+- hosts: odroids pines rpis vms
 
   tasks:
   - authorized_key: user=root key="{{ lookup('file', '/Users/markus/.ssh/id_rsa.pub') }}"
+  - authorized_key: user=root key="{{ lookup('file', '/Users/markus/.ssh/id_ecdsa.pub') }}"
   - lineinfile: dest=/etc/ssh/sshd_config state=present insertafter="^# Authentication" line="PermitRootLogin yes"
-  - lineinfile: dest=/etc/ssh/sshd_config state=present insertafter="^#PubkeyAuthentication" line="PubkeyAcceptedKeyTypes +ssh-dss"
-  - lineinfile: dest=/etc/ssh/ssh_config state=present line="PubkeyAcceptedKeyTypes +ssh-dss"
   - ini_file: dest=/etc/pacman.conf
               section=custom
               option=SigLevel
