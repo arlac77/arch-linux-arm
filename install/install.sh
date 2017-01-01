@@ -3,13 +3,13 @@
 HOSTNAME=$1
 
 read HOSTNAME IP GATEWAY MACADDR PLATFORM PART_SCHEME <<< $(grep $HOSTNAME<<EOF
-ordoid0  10.0.6.0  10.0.0.2 0:1e:6:10:06:0    odroid-xu3  ext2_only
-ordoid1  10.0.6.1  10.0.0.2 0:1e:6:10:06:1    odroid-xu4  ext2_only
-ordoid2  10.0.6.2  10.0.0.2 0:1e:6:10:06:2    odroid-xu4  ext2_only
-ordoid3  10.0.6.3  10.0.0.2 0:1e:6:10:06:3    odroid-xu4  ext2_only
-ordoid4  10.0.6.4  10.0.0.2 0:1e:6:10:06:4    odroid-xu4  ext2_only
-ordoid5  10.0.6.5  10.0.0.2 0:1e:6:10:06:5    odroid-xu4  ext2_only
-ordoid11 10.0.6.11 10.0.0.2 0:1e:6:10:06:11   odroid-c2   ext2_only
+odroid0  10.0.6.0  10.0.0.2 0:1e:6:10:06:0    odroid-xu3  ext2_only
+odroid1  10.0.6.1  10.0.0.2 0:1e:6:10:06:1    odroid-xu3  ext2_only
+odroid2  10.0.6.2  10.0.0.2 0:1e:6:10:06:2    odroid-xu3  ext2_only
+odroid3  10.0.6.3  10.0.0.2 0:1e:6:10:06:3    odroid-xu3  ext2_only
+odroid4  10.0.6.4  10.0.0.2 0:1e:6:10:06:4    odroid-xu3  ext2_only
+odroid5  10.0.6.5  10.0.0.2 0:1e:6:10:06:5    odroid-xu3  ext2_only
+odroid11 10.0.6.11 10.0.0.2 0:1e:6:10:06:11   odroid-c2   ext2_only
 pine1    10.0.6.21 10.0.0.2 0:1e:6:10:06:21   pine64      ext2_only
 pine2    10.0.6.22 10.0.0.2 0:1e:6:10:06:22   pine64      ext2_only
 pine3    10.0.6.23 10.0.0.2 0:1e:6:10:06:23   pine64      ext2_only
@@ -74,7 +74,7 @@ Address=$IP/16
 Gateway=$GATEWAY
 EOF
  cd usr/bin;ln -s python2.7 python
- mkdir -o root/.ssh
+ mkdir -p root/.ssh
  cat >root/.ssh/authorized_keys<<EOF
 ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBPzHP3wE8qlmB9QLwKMK5dIb/Azej+aIg6UmL6YRoHE51ISI4SQc6gBYCfucB9isVns/ucejDRdVQBtthZd/RTM= markus@pro
 EOF
