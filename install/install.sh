@@ -4,7 +4,7 @@ HOSTNAME=$1
 
 read HOSTNAME IP GATEWAY MACADDR PLATFORM PART_SCHEME <<< $(grep $HOSTNAME<<EOF
 odroid0  10.0.6.0  10.0.0.2 0:1e:6:10:06:0    odroid-xu3  ext2_only
-odroid1  10.0.6.1  10.0.0.2 0:1e:6:10:06:1    odroid-xu3  ext2_only
+odroid1  10.0.6.1  10.0.0.2 00:1e:06:31:08:57 odroid-xu3  ext2_only
 odroid2  10.0.6.2  10.0.0.2 0:1e:6:10:06:2    odroid-xu3  ext2_only
 odroid3  10.0.6.3  10.0.0.2 0:1e:6:10:06:3    odroid-xu3  ext2_only
 odroid4  10.0.6.4  10.0.0.2 0:1e:6:10:06:4    odroid-xu3  ext2_only
@@ -41,14 +41,6 @@ p
 w
 __EOF__
 
-
-#fdisk $SDX
-
-# At the fdisk prompt, create the new partitions:
-# Type o. This will clear out any partitions on the drive.
-# Type p to list partitions. There should be no partitions left.
-# Type n, then p for primary, 1 for the first partition on the drive, and enter twice to accept the default starting and ending sectors.
-# Write the partition table and exit by typing w.
 
 cd /tmp
 mkdir -p root
