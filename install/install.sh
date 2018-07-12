@@ -68,7 +68,6 @@ Name=eth0
 Address=$IP/16
 Gateway=$GATEWAY
 EOF
- cd usr/bin;ln -s python2.7 python
  mkdir -p root/.ssh
  cat >root/.ssh/authorized_keys<<EOF
 ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBPzHP3wE8qlmB9QLwKMK5dIb/Azej+aIg6UmL6YRoHE51ISI4SQc6gBYCfucB9isVns/ucejDRdVQBtthZd/RTM= markus@pro
