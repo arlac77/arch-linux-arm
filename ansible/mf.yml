@@ -3,4 +3,4 @@
 
   tasks:
   - pacman: pkg=dhcp state=latest
-  - service: name=dhcpd state=started
+  - service: name=dhcpd4 state=started
