@@ -1,0 +1,6 @@
+---
+- hosts: mf
+
+  tasks:
+  - pacman: pkg=dhcp state=latest
+  - service: name=dhcpd state=started
