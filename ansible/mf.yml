@@ -4,7 +4,17 @@
   tasks:
   - pacman: pkg=fetchmail state=latest
   - pacman: pkg=dhcp state=latest
+  - pacman: pkg=postfix state=latest
+  - pacman: pkg=dovecot state=latest
   - systemd:
       name: dhcpd4
+      enabled: yes
+      state: started
+  - systemd:
+      name: postfix
+      enabled: yes
+      state: started
+  - systemd:
+      name: dovecot
       enabled: yes
       state: started
