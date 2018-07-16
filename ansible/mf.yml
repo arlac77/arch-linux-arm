@@ -6,6 +6,7 @@
   - pacman: pkg=dhcp state=latest
   - pacman: pkg=postfix state=latest
   - pacman: pkg=dovecot state=latest
+  - pacman: pkg=samba state=latest
   - systemd:
       name: dhcpd4
       enabled: yes
@@ -16,5 +17,9 @@
       state: started
   - systemd:
       name: dovecot
+      enabled: yes
+      state: started
+  - systemd:
+      name: samba
       enabled: yes
       state: started
