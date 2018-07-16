@@ -2,5 +2,9 @@
 - hosts: mf
 
   tasks:
+  - pacman: pkg=fetchmail state=latest
   - pacman: pkg=dhcp state=latest
-  - service: name=dhcpd4 state=started
+  - systemd:
+      name: dhcpd4
+      enabled: yes
+      state: started
