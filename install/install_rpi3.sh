@@ -46,7 +46,7 @@ PLATFORM=rpi-3
 
 curl -O http://${ARCHLINUX_MIRROR}/os/ArchLinuxARM-${PLATFORM}-latest.tar.gz
 
-tar -xzvf ArchLinuxARM-${PLATFORM}-latest.tar.gz -C root
+bsdtar -xzvf ArchLinuxARM-${PLATFORM}-latest.tar.gz -C root
 
 sync
 
