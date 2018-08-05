@@ -39,9 +39,12 @@ mkfs.ext4 $SDX2
 mkdir root
 mount $SDX2 root
 
-
+ARCHLINUX_MIRROR="nl2.mirror.archlinuxarm.org"
+ARCHLINUX_MIRROR="os.archlinuxarm.org"
+ARCHLINUX_MIRROR="dk.mirror.archlinuxarm.org"
 PLATFORM=rpi-3
-curl -O http://nl2.mirror.archlinuxarm.org/os/ArchLinuxARM-${PLATFORM}-latest.tar.gz
+
+curl -O http://${ARCHLINUX_MIRROR}/os/ArchLinuxARM-${PLATFORM}-latest.tar.gz
 
 tar -xzvf ArchLinuxARM-${PLATFORM}-latest.tar.gz -C root
 
