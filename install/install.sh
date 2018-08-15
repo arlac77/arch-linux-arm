@@ -54,7 +54,7 @@ ARCHLINUX_MIRROR="dk.mirror.archlinuxarm.org"
 
 curl -O http://${ARCHLINUX_MIRROR}/os/ArchLinuxARM-${PLATFORM}-latest.tar.gz
 
-tar -xzvf ArchLinuxARM-${PLATFORM}-latest.tar.gz -C root
+bsdtar -xzvf ArchLinuxARM-${PLATFORM}-latest.tar.gz -C root
 
 (cd root
  tar cvfp - /etc/systemd/network/eth0.network /root/.ssh /etc/ssh/sshd_config /etc/ssh/ssh_host_* | tar xvfp -
