@@ -13,12 +13,24 @@ odroid11 10.0.6.11 10.0.0.2 0:1e:6:10:06:11   odroid-c2   ext2_only
 pine1    10.0.6.21 10.0.0.2 0:1e:6:10:06:21   pine64      ext2_only
 pine2    10.0.6.22 10.0.0.2 0:1e:6:10:06:22   pine64      ext2_only
 pine3    10.0.6.23 10.0.0.2 0:1e:6:10:06:23   pine64      ext2_only
-rock1    10.0.6.24 10.0.0.2 3e:2a:57:bf:39:46 aarch64     ext2_only
+rock1    10.0.6.24 10.0.0.2 3e:2a:57:bf:39:46 rock64      ext2_only
 rpi1     10.0.6.31 10.0.0.2 b8:27:eb:5c:84:bd rpi-3       vfat_ext2
 EOF
 )
 
-echo $HOSTNAME $IP $GATEWAY $MACADDR $PLATFORM $PART_SCHEME
+case $PLATFORM in
+rock64)
+  ARCH_LINUX_PLATFORM=aarch64
+  ;;
+*)
+  ARCH_LINUX_PLATFORM=$PLATFORM
+  ;;
+esac
+
+
+
+echo $HOSTNAME $IP $GATEWAY $MACADDR $PLATFORM $ARCH_LINUX_PLATFORM $PART_SCHEME
+
 
 SDX=/dev/mmcblk1
 SDX1=/dev/mmcblk1p1
@@ -53,9 +65,9 @@ ARCHLINUX_MIRROR="nl2.mirror.archlinuxarm.org"
 ARCHLINUX_MIRROR="os.archlinuxarm.org"
 ARCHLINUX_MIRROR="dk.mirror.archlinuxarm.org"
 
-curl -O http://${ARCHLINUX_MIRROR}/os/ArchLinuxARM-${PLATFORM}-latest.tar.gz
+curl -O http://${ARCHLINUX_MIRROR}/os/ArchLinuxARM-${ARCH_LINUX_PLATFORM}-latest.tar.gz
 
-bsdtar -xzvf ArchLinuxARM-${PLATFORM}-latest.tar.gz -C root
+bsdtar -xzvf ArchLinuxARM-${ARCH_LINUX_PLATFORM}-latest.tar.gz -C root
 
 (cd root
  tar cvfp - /etc/systemd/network/eth0.network /root/.ssh /etc/ssh/sshd_config /etc/ssh/ssh_host_* | tar xvfp -
@@ -75,9 +87,23 @@ ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBPzHP3wE
 EOF
 )
 
-cd root/boot
-./sd_fusing.sh $SDX
-cd ../..
-
-
-umount root
+case $PLATFORM in
+rock64)
+  curl http://os.archlinuxarm.org/os/rockchip/boot/rock64/boot.scr > root/boot/boot.scr
+  umount root
+  curl -O http://os.archlinuxarm.org/os/rockchip/boot/rock64/idbloader.img
+  curl -O http://os.archlinuxarm.org/os/rockchip/boot/rock64/uboot.img
+  curl -O http://os.archlinuxarm.org/os/rockchip/boot/rock64/trust.img
+  dd if=idbloader.img of=/dev/sdX seek=64 conv=notrunc
+  dd if=uboot.img of=/dev/sdX seek=16384 conv=notrunc
+  dd if=trust.img of=/dev/sdX seek=24576 conv=notrunc
+  ;;
+odroid-xu3)
+  cd root/boot
+  ./sd_fusing.sh $SDX
+  cd ../..
+  umount root
+  ;;
+*)
+  ;;
+esac
