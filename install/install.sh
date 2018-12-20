@@ -13,6 +13,7 @@ odroid11 10.0.6.11 10.0.0.2 0:1e:6:10:06:11   odroid-c2   ext2_only
 pine1    10.0.6.21 10.0.0.2 0:1e:6:10:06:21   pine64      ext2_only
 pine2    10.0.6.22 10.0.0.2 0:1e:6:10:06:22   pine64      ext2_only
 pine3    10.0.6.23 10.0.0.2 0:1e:6:10:06:23   pine64      ext2_only
+rock1    10.0.6.24 10.0.0.2 3e:2a:57:bf:39:46 aarch64     ext2_only
 rpi1     10.0.6.31 10.0.0.2 b8:27:eb:5c:84:bd rpi-3       vfat_ext2
 EOF
 )
