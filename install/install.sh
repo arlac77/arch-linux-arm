@@ -89,14 +89,14 @@ EOF
 
 case $PLATFORM in
 rock64)
-  curl http://os.archlinuxarm.org/os/rockchip/boot/rock64/boot.scr > root/boot/boot.scr
+  curl http://${ARCHLINUX_MIRROR}/os/rockchip/boot/rock64/boot.scr > root/boot/boot.scr
   umount root
-  curl -O http://os.archlinuxarm.org/os/rockchip/boot/rock64/idbloader.img
-  curl -O http://os.archlinuxarm.org/os/rockchip/boot/rock64/uboot.img
-  curl -O http://os.archlinuxarm.org/os/rockchip/boot/rock64/trust.img
-  dd if=idbloader.img of=/dev/sdX seek=64 conv=notrunc
-  dd if=uboot.img of=/dev/sdX seek=16384 conv=notrunc
-  dd if=trust.img of=/dev/sdX seek=24576 conv=notrunc
+  curl -O http://${ARCHLINUX_MIRROR}/os/rockchip/boot/rock64/idbloader.img
+  curl -O http://${ARCHLINUX_MIRROR}/os/rockchip/boot/rock64/uboot.img
+  curl -O http://${ARCHLINUX_MIRROR}/os/rockchip/boot/rock64/trust.img
+  dd if=idbloader.img of=$SDX seek=64 conv=notrunc
+  dd if=uboot.img of=$SDX seek=16384 conv=notrunc
+  dd if=trust.img of=$SDX seek=24576 conv=notrunc
   ;;
 odroid-xu3)
   cd root/boot
