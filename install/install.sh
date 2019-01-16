@@ -71,6 +71,13 @@ curl -O http://${ARCHLINUX_MIRROR}/os/ArchLinuxARM-${ARCH_LINUX_PLATFORM}-latest
 bsdtar -xzvf ArchLinuxARM-${ARCH_LINUX_PLATFORM}-latest.tar.gz -C root
 
 (cd root
+ cat >firstboot.sh <<EOF
+pacman-key --init
+pacman-key --populate archlinuxarm
+pacman -Syu
+pacman -S ansible
+EOF
+
  tar cvfp - /etc/systemd/network/eth0.network /root/.ssh /etc/ssh/sshd_config /etc/ssh/ssh_host_* | tar xvfp -
  echo $HOSTNAME >etc/hostname
  #perl setenv macaddr "$MACADDR" boot/boot.txt
