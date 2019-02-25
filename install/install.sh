@@ -97,6 +97,7 @@ EOF
 
 case $PLATFORM in
 orangepi)
+  umount root
   ;;
 rock64)
   curl http://${ARCHLINUX_MIRROR}/os/rockchip/boot/rock64/boot.scr > root/boot/boot.scr
@@ -112,6 +113,9 @@ odroid-xu3)
   cd root/boot
   ./sd_fusing.sh $SDX
   cd ../..
+  umount root
+  ;;
+odroid-c2)
   umount root
   ;;
 *)
