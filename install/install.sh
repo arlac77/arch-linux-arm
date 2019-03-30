@@ -22,6 +22,7 @@ EOF
 case $PLATFORM in
 rock64)
   ARCH_LINUX_PLATFORM=aarch64
+  EXTRA_FIRSTBOOT="rm /boot/boot.scr;pacman -Sy uboot-rock64"
   ;;
 *)
   ARCH_LINUX_PLATFORM=$PLATFORM
@@ -76,6 +77,7 @@ pacman-key --init
 pacman-key --populate archlinuxarm
 pacman -Syu
 pacman -S ansible
+$EXTRA_FIRSTBOOT
 EOF
 
  tar cvfp - /etc/systemd/network/eth0.network /root/.ssh /etc/ssh/sshd_config /etc/ssh/ssh_host_* | tar xvfp -
