@@ -22,7 +22,9 @@ EOF
 case $PLATFORM in
 rock64)
   ARCH_LINUX_PLATFORM=aarch64
-  EXTRA_FIRSTBOOT="rm /boot/boot.scr;pacman -Sy uboot-rock64"
+  MACADDR_WITH_SPACES=$(echo $MACADDR|sed 's/:/ /g')
+  SED_CMD="sed -i \"s/setenv macaddr .*/setenv macaddr ${MACADDR_WITH_SPACES}/\""
+  EXTRA_FIRSTBOOT="rm /boot/boot.scr;pacman -Sy uboot-rock64; $SED_CMD /boot/boot.txt"
   ;;
 *)
   ARCH_LINUX_PLATFORM=$PLATFORM
@@ -76,10 +78,11 @@ bsdtar -xzvf ArchLinuxARM-${ARCH_LINUX_PLATFORM}-latest.tar.gz -C root
 pacman-key --init
 pacman-key --populate archlinuxarm
 pacman -Syu
+pacman -S uboot-tools
 pacman -S ansible
 $EXTRA_FIRSTBOOT
 EOF
-
+ chmod +x firstboot.sh
  tar cvfp - /etc/systemd/network/eth0.network /root/.ssh /etc/ssh/sshd_config /etc/ssh/ssh_host_* | tar xvfp -
  echo $HOSTNAME >etc/hostname
  #perl setenv macaddr "$MACADDR" boot/boot.txt
