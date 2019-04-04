@@ -77,9 +77,9 @@ bsdtar -xzvf ArchLinuxARM-${ARCH_LINUX_PLATFORM}-latest.tar.gz -C root
  cat >firstboot.sh <<EOF
 pacman-key --init
 pacman-key --populate archlinuxarm
-pacman -Syu
-pacman -S uboot-tools
-pacman -S ansible
+pacman -Syu --noconfirm
+pacman -S uboot-tools --noconfirm
+pacman -S ansible --noconfirm
 $EXTRA_FIRSTBOOT
 EOF
  chmod +x firstboot.sh
