@@ -19,12 +19,17 @@ orangepi2 10.0.6.42 10.0.0.2 02:01:63:69:fe:74 orangepi    ext4_only
 EOF
 )
 
+MACADDR_WITH_SPACES=$(echo $MACADDR|sed 's/:/ /g')
+
 case $PLATFORM in
 rock64)
   ARCH_LINUX_PLATFORM=aarch64
-  MACADDR_WITH_SPACES=$(echo $MACADDR|sed 's/:/ /g')
   SED_CMD="sed -i \"s/setenv macaddr .*/setenv macaddr ${MACADDR_WITH_SPACES}/\""
   EXTRA_FIRSTBOOT="rm /boot/boot.scr;pacman -Sy uboot-rock64; $SED_CMD /boot/boot.txt"
+  ;;
+pine64)
+  ARCH_LINUX_PLATFORM=aarch64
+  EXTRA_FIRSTBOOT="rm /boot/boot.scr;pacman -Sy uboot-pine64"
   ;;
 *)
   ARCH_LINUX_PLATFORM=$PLATFORM
@@ -122,6 +127,12 @@ odroid-xu3)
   ;;
 odroid-c2)
   umount root
+  ;;
+pine64)
+  curl http://${ARCHLINUX_MIRROR}/os/allwinner/boot/pine64/boot.scr > root/boot/boot.scr
+  umount root
+  curl -O http://${ARCHLINUX_MIRROR}/os/allwinner/boot/pine64/u-boot-sunxi-with-spl.bin
+  dd if=u-boot-sunxi-with-spl.bin of=$SDX bs=8k seek=1
   ;;
 *)
   ;;
