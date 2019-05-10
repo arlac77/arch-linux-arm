@@ -78,7 +78,7 @@ ARCHLINUX_MIRROR="nl2.mirror.archlinuxarm.org"
 ARCHLINUX_MIRROR="os.archlinuxarm.org"
 ARCHLINUX_MIRROR="dk.mirror.archlinuxarm.org"
 
-curl -O http://${ARCHLINUX_MIRROR}/os/ArchLinuxARM-${ARCH_LINUX_PLATFORM}-latest.tar.gz
+curl -L -O http://${ARCHLINUX_MIRROR}/os/ArchLinuxARM-${ARCH_LINUX_PLATFORM}-latest.tar.gz
 
 bsdtar -xzvf ArchLinuxARM-${ARCH_LINUX_PLATFORM}-latest.tar.gz -C root
 
@@ -111,9 +111,9 @@ EOF
 
 case $PLATFORM in
 orangepi-zero-plus)
-  curl -O https://github.com/RoEdAl/alarm-uboot-sunxi-aarch64/releases/download/v${UBOOT_VERSION}/uboot-${PLATFORM}-${UBOOT_VERSION}-aarch64.pkg.tar.xz
+  curl -L -O https://github.com/RoEdAl/alarm-uboot-sunxi-aarch64/releases/download/v${UBOOT_VERSION}/uboot-${PLATFORM}-${UBOOT_VERSION}-aarch64.pkg.tar.xz
   bsdtar -xf uboot-${PLATFORM}-${UBOOT_VERSION}-aarch64.pkg.tar.xz boot/u-boot-sunxi-with-spl.bin boot/boot.scr
-  dd if=root/boot/u-boot-sunxi-with-spl.bin of=$SDX bs=8k seek=1
+  dd if=boot/u-boot-sunxi-with-spl.bin of=$SDX bs=8k seek=1
   cp boot/boot.scr root/boot
   sync
   umount root
@@ -121,9 +121,9 @@ orangepi-zero-plus)
 rock64)
   curl http://${ARCHLINUX_MIRROR}/os/rockchip/boot/rock64/boot.scr > root/boot/boot.scr
   umount root
-  curl -O http://${ARCHLINUX_MIRROR}/os/rockchip/boot/rock64/idbloader.img
-  curl -O http://${ARCHLINUX_MIRROR}/os/rockchip/boot/rock64/uboot.img
-  curl -O http://${ARCHLINUX_MIRROR}/os/rockchip/boot/rock64/trust.img
+  curl -L -O http://${ARCHLINUX_MIRROR}/os/rockchip/boot/rock64/idbloader.img
+  curl -L -O http://${ARCHLINUX_MIRROR}/os/rockchip/boot/rock64/uboot.img
+  curl -L -O http://${ARCHLINUX_MIRROR}/os/rockchip/boot/rock64/trust.img
   dd if=idbloader.img of=$SDX seek=64 conv=notrunc
   dd if=uboot.img of=$SDX seek=16384 conv=notrunc
   dd if=trust.img of=$SDX seek=24576 conv=notrunc
@@ -140,7 +140,7 @@ odroid-c2)
 pine64)
   curl http://${ARCHLINUX_MIRROR}/os/allwinner/boot/pine64/boot.scr > root/boot/boot.scr
   umount root
-  curl -O http://${ARCHLINUX_MIRROR}/os/allwinner/boot/pine64/u-boot-sunxi-with-spl.bin
+  curl -L -O http://${ARCHLINUX_MIRROR}/os/allwinner/boot/pine64/u-boot-sunxi-with-spl.bin
   dd if=u-boot-sunxi-with-spl.bin of=$SDX bs=8k seek=1
   ;;
 *)
