@@ -3,19 +3,19 @@
 HOSTNAME=$1
 
 read HOSTNAME IP GATEWAY MACADDR PLATFORM PART_SCHEME <<< $(grep $HOSTNAME<<EOF
-odroid0   10.0.6.0  10.0.0.2 0:1e:6:10:06:0    odroid-xu3  ext4_only
-odroid1   10.0.6.1  10.0.0.2 00:1e:06:31:08:57 odroid-xu3  ext4_only
-odroid2   10.0.6.2  10.0.0.2 0:1e:6:10:06:2    odroid-xu3  ext4_only
-odroid3   10.0.6.3  10.0.0.2 0:1e:6:10:06:3    odroid-xu3  ext4_only
-odroid4   10.0.6.4  10.0.0.2 0:1e:6:10:06:4    odroid-xu3  ext4_only
-odroid5   10.0.6.5  10.0.0.2 0:1e:6:10:06:5    odroid-xu3  ext4_only
-odroid11  10.0.6.11 10.0.0.2 0:1e:6:10:06:11   odroid-c2   ext4_only
-pine1     10.0.6.21 10.0.0.2 0:1e:6:10:06:21   pine64      ext4_only
-pine2     10.0.6.22 10.0.0.2 0:1e:6:10:06:22   pine64      ext4_only
-pine3     10.0.6.23 10.0.0.2 0:1e:6:10:06:23   pine64      ext4_only
-rock1     10.0.6.24 10.0.0.2 3e:2a:57:bf:39:46 rock64      ext4_only
-rpi1      10.0.6.31 10.0.0.2 b8:27:eb:5c:84:bd rpi-3       vfat_ext2
-orangepi2 10.0.6.42 10.0.0.2 02:01:63:69:fe:74 orangepi    ext4_only
+odroid0   10.0.6.0  10.0.0.2 0:1e:6:10:06:0    odroid-xu3         ext4_only
+odroid1   10.0.6.1  10.0.0.2 00:1e:06:31:08:57 odroid-xu3         ext4_only
+odroid2   10.0.6.2  10.0.0.2 0:1e:6:10:06:2    odroid-xu3         ext4_only
+odroid3   10.0.6.3  10.0.0.2 0:1e:6:10:06:3    odroid-xu3         ext4_only
+odroid4   10.0.6.4  10.0.0.2 0:1e:6:10:06:4    odroid-xu3         ext4_only
+odroid5   10.0.6.5  10.0.0.2 0:1e:6:10:06:5    odroid-xu3         ext4_only
+odroid11  10.0.6.11 10.0.0.2 0:1e:6:10:06:11   odroid-c2          ext4_only
+pine1     10.0.6.21 10.0.0.2 0:1e:6:10:06:21   pine64             ext4_only
+pine2     10.0.6.22 10.0.0.2 0:1e:6:10:06:22   pine64             ext4_only
+pine3     10.0.6.23 10.0.0.2 0:1e:6:10:06:23   pine64             ext4_only
+rock1     10.0.6.24 10.0.0.2 3e:2a:57:bf:39:46 rock64             ext4_only
+rpi1      10.0.6.31 10.0.0.2 b8:27:eb:5c:84:bd rpi-3              vfat_ext2
+orangepi2 10.0.6.42 10.0.0.2 02:01:63:69:fe:74 orangepi-zero-plus ext4_only
 EOF
 )
 
@@ -31,11 +31,15 @@ pine64)
   ARCH_LINUX_PLATFORM=aarch64
   EXTRA_FIRSTBOOT="pacman -Sy uboot-pine64"
   ;;
+orangepi-zero-plus)
+  ARCH_LINUX_PLATFORM=aarch64
+  UBOOT_VERSION="2019.04-1"
+  EXTRA_FIRSTBOOT="pacman -Sy uboot-${PLATFORM}-${UBOOT_VERSION}-aarch64.pkg.tar.xz"
+  ;;
 *)
   ARCH_LINUX_PLATFORM=$PLATFORM
   ;;
 esac
-
 
 
 echo $HOSTNAME $IP $GATEWAY $MACADDR $PLATFORM $ARCH_LINUX_PLATFORM $PART_SCHEME
@@ -106,7 +110,12 @@ EOF
 )
 
 case $PLATFORM in
-orangepi)
+orangepi-zero-plus)
+  curl -O https://github.com/RoEdAl/alarm-uboot-sunxi-aarch64/releases/download/v${UBOOT_VERSION}/uboot-${PLATFORM}-${UBOOT_VERSION}-aarch64.pkg.tar.xz
+  bsdtar -xf uboot-${PLATFORM}-${UBOOT_VERSION}-aarch64.pkg.tar.xz boot/u-boot-sunxi-with-spl.bin boot/boot.scr
+  dd if=root/boot/u-boot-sunxi-with-spl.bin of=$SDX bs=8k seek=1
+  cp boot/boot.scr root/boot
+  sync
   umount root
   ;;
 rock64)
