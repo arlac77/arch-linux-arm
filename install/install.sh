@@ -1,5 +1,10 @@
 # see http://archlinuxarm.org/platforms/armv7/samsung/odroid-xu3
 
+if [ -z $1 ]; then
+        echo "no hostname given"
+        exit 1
+fi
+
 HOSTNAME=$1
 
 read HOSTNAME IP GATEWAY MACADDR PLATFORM PART_SCHEME <<< $(grep $HOSTNAME<<EOF
