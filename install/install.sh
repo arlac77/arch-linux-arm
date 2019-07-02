@@ -140,6 +140,9 @@ odroid-xu3)
   umount root
   ;;
 odroid-c2)
+  cd root/boot
+  ./sd_fusing.sh $SDX
+  cd ../..
   umount root
   ;;
 pine64)
