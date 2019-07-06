@@ -76,7 +76,7 @@ __EOF__
 cd /tmp
 mkdir -p root
 
-mkfs.ext4 $SDX1
+mkfs.ext4 -O ^metadata_csum,^64bit $SDX1
 mount $SDX1 root
 
 ARCHLINUX_MIRROR="nl2.mirror.archlinuxarm.org"
@@ -85,7 +85,7 @@ ARCHLINUX_MIRROR="dk.mirror.archlinuxarm.org"
 
 curl -L -O http://${ARCHLINUX_MIRROR}/os/ArchLinuxARM-${ARCH_LINUX_PLATFORM}-latest.tar.gz
 
-bsdtar -xzvf ArchLinuxARM-${ARCH_LINUX_PLATFORM}-latest.tar.gz -C root
+bsdtar -xzvpf ArchLinuxARM-${ARCH_LINUX_PLATFORM}-latest.tar.gz -C root
 
 (cd root
  cat >firstboot.sh <<EOF
