@@ -41,6 +41,10 @@ orangepi-zero-plus)
   UBOOT_VERSION="2019.04-1"
   EXTRA_FIRSTBOOT="pacman -Sy uboot-${PLATFORM}-${UBOOT_VERSION}-aarch64.pkg.tar.xz"
   ;;
+odroid-c2)
+  ARCH_LINUX_PLATFORM=$PLATFORM
+  EXTRA_FIRSTBOOT='echo setenv nographics "1" >>boot/boot.txt'
+  ;;
 *)
   ARCH_LINUX_PLATFORM=$PLATFORM
   ;;
