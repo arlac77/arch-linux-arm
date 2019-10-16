@@ -6,3 +6,9 @@ http://odroid.com/dokuwiki/doku.php?id=en:xu3_bootmode_configuration [Boot mode 
 ---
 
 TODO: - one step image creation
+
+```sh
+install/install.sh <hostname>
+```
+
+will create a bootable disk on /dev/mmcblk1

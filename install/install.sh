@@ -43,7 +43,7 @@ orangepi-zero-plus)
   ;;
 odroid-c2)
   ARCH_LINUX_PLATFORM=$PLATFORM
-  EXTRA_FIRSTBOOT='echo setenv nographics "1" >>boot/boot.txt'
+  EXTRA_FIRSTBOOT="sed -i 's/setenv nographics \"0\"/setenv nographics \"1\"/' /boot/boot.ini"
   ;;
 *)
   ARCH_LINUX_PLATFORM=$PLATFORM
