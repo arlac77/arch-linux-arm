@@ -30,7 +30,7 @@ case $PLATFORM in
 rock64)
   ARCH_LINUX_PLATFORM=aarch64
   SED_CMD="sed -i \"s/setenv macaddr .*/setenv macaddr ${MACADDR_WITH_SPACES}/\""
-  EXTRA_FIRSTBOOT="pacman -Sy uboot-rock64; $SED_CMD /boot/boot.txt"
+  EXTRA_FIRSTBOOT="pacman -Sy uboot-rock64 --noconfirm; $SED_CMD /boot/boot.txt"
   ;;
 pine64)
   ARCH_LINUX_PLATFORM=aarch64
