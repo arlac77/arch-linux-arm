@@ -34,7 +34,9 @@ rock64)
   ;;
 pine64)
   ARCH_LINUX_PLATFORM=aarch64
-  EXTRA_FIRSTBOOT="pacman -Sy uboot-pine64"
+  # pacman -S ethtool
+  # ethtool -s eth0 autoneg off speed 100 duplex full
+  EXTRA_FIRSTBOOT="pacman -Sy uboot-pine64 --noconfirm"
   ;;
 orangepi-zero-plus)
   ARCH_LINUX_PLATFORM=aarch64
