@@ -122,6 +122,7 @@ EOF
 
 case $PLATFORM in
 orangepi-zero-plus)
+# from https://github.com/RoEdAl/alarm-uboot-sunxi-aarch64
   curl -L -O https://github.com/RoEdAl/alarm-uboot-sunxi-aarch64/releases/download/v${UBOOT_VERSION}/uboot-${PLATFORM}-${UBOOT_VERSION}-aarch64.pkg.tar.xz
   bsdtar -xf uboot-${PLATFORM}-${UBOOT_VERSION}-aarch64.pkg.tar.xz boot/u-boot-sunxi-with-spl.bin boot/boot.scr
   dd if=boot/u-boot-sunxi-with-spl.bin of=$SDX bs=8k seek=1
