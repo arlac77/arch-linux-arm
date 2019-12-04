@@ -1,4 +1,5 @@
 # see http://archlinuxarm.org/platforms/armv7/samsung/odroid-xu3
+# https://magazine.odroid.com/article/emmc-recovery-resetting-the-odroid-xu4-emmc-module-to-fix-boot-issues/
 
 if [ -z $1 ]; then
         echo "no hostname given"
