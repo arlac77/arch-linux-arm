@@ -119,7 +119,12 @@ EOF
  cat >root/.ssh/authorized_keys<<EOF
 ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBPzHP3wE8qlmB9QLwKMK5dIb/Azej+aIg6UmL6YRoHE51ISI4SQc6gBYCfucB9isVns/ucejDRdVQBtthZd/RTM= markus@pro
 EOF
+
+cat <<EOF >>etc/systemd/resolved.conf
+DNSSEC=false
+EOF
 )
+
 
 case $PLATFORM in
 orangepi-zero-plus)
