@@ -80,7 +80,7 @@ w
 __EOF__
 
 
-cd /tmp
+#cd /tmp
 mkdir -p root
 
 mkfs.ext4 -O ^metadata_csum,^64bit $SDX1
