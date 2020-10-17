@@ -9,19 +9,19 @@ fi
 HOSTNAME=$1
 
 read HOSTNAME IP GATEWAY MACADDR PLATFORM PART_SCHEME <<< $(grep $HOSTNAME<<EOF
-odroid0   10.0.6.0  10.0.0.2 0:1e:6:10:06:0    odroid-xu3         ext4_only
-odroid1   10.0.6.1  10.0.0.2 00:1e:06:31:08:57 odroid-xu3         ext4_only
-odroid2   10.0.6.2  10.0.0.2 0:1e:6:10:06:2    odroid-xu3         ext4_only
-odroid3   10.0.6.3  10.0.0.2 0:1e:6:10:06:3    odroid-xu3         ext4_only
-odroid4   10.0.6.4  10.0.0.2 0:1e:6:10:06:4    odroid-xu3         ext4_only
-odroid5   10.0.6.5  10.0.0.2 0:1e:6:10:06:5    odroid-xu3         ext4_only
-odroid11  10.0.6.11 10.0.0.2 0:1e:6:10:06:11   odroid-c2          ext4_only
-pine1     10.0.6.21 10.0.0.2 0:1e:6:10:06:21   pine64             ext4_only
-pine2     10.0.6.22 10.0.0.2 0:1e:6:10:06:22   pine64             ext4_only
-pine3     10.0.6.23 10.0.0.2 0:1e:6:10:06:23   pine64             ext4_only
-rock1     10.0.6.24 10.0.0.2 3e:2a:57:bf:39:46 rock64             ext4_only
-rpi1      10.0.6.31 10.0.0.2 b8:27:eb:5c:84:bd rpi-3              vfat_ext2
-orangepi2 10.0.6.42 10.0.0.2 02:01:63:69:fe:74 orangepi-zero-plus ext4_only
+odroid0   10.0.6.0/16   10.0.0.2 0:1e:6:10:06:0    odroid-xu3         ext4_only
+odroid1   10.0.6.1/16   10.0.0.2 00:1e:06:31:08:57 odroid-xu3         ext4_only
+odroid2   10.0.6.2/16   10.0.0.2 0:1e:6:10:06:2    odroid-xu3         ext4_only
+odroid3   10.0.6.3/16   10.0.0.2 0:1e:6:10:06:3    odroid-xu3         ext4_only
+odroid4   10.0.6.4/16   10.0.0.2 0:1e:6:10:06:4    odroid-xu3         ext4_only
+odroid5   10.0.6.5/16   10.0.0.2 0:1e:6:10:06:5    odroid-xu3         ext4_only
+odroid11  10.0.6.11/16  10.0.0.2 0:1e:6:10:06:11   odroid-c2          ext4_only
+pine1     10.0.6.21/16  10.0.0.2 0:1e:6:10:06:21   pine64             ext4_only
+pine2     10.0.6.22/16  10.0.0.2 0:1e:6:10:06:22   pine64             ext4_only
+pine3     10.0.6.23/16  10.0.0.2 0:1e:6:10:06:23   pine64             ext4_only
+rock1     10.0.6.24/16  10.0.0.2 3e:2a:57:bf:39:46 rock64             ext4_only
+rpi1      10.0.6.31/16  10.0.0.2 b8:27:eb:5c:84:bd rpi-3              vfat_ext2
+orangepi2 10.0.6.42/16  10.0.0.2 02:01:63:69:fe:74 orangepi-zero-plus ext4_only
 EOF
 )
 
@@ -112,7 +112,7 @@ EOF
 Name=eth0
 
 [Network]
-Address=$IP/16
+Address=$IP
 Gateway=$GATEWAY
 EOF
  mkdir -p root/.ssh
