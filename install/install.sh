@@ -15,6 +15,7 @@ odroid2   10.0.6.2/16   10.0.0.2 0:1e:6:10:06:2    odroid-xu3         ext4_only
 odroid3   10.0.6.3/16   10.0.0.2 0:1e:6:10:06:3    odroid-xu3         ext4_only
 odroid4   10.0.6.4/16   10.0.0.2 0:1e:6:10:06:4    odroid-xu3         ext4_only
 odroid5   10.0.6.5/16   10.0.0.2 0:1e:6:10:06:5    odroid-xu3         ext4_only
+odroid6   10.0.6.6/16   10.0.0.2 0:1e:6:10:06:6    odroid-n2          ext4_only
 odroid11  10.0.6.11/16  10.0.0.2 0:1e:6:10:06:11   odroid-c2          ext4_only
 pine1     10.0.6.21/16  10.0.0.2 0:1e:6:10:06:21   pine64             ext4_only
 pine2     10.0.6.22/16  10.0.0.2 0:1e:6:10:06:22   pine64             ext4_only
@@ -157,6 +158,11 @@ odroid-c2)
   ./sd_fusing.sh $SDX
   cd ../..
   umount root
+  ;;
+odroid-n2)
+  mkdir boot
+  mv root/boot/* boot
+  dd if=boot/u-boot.bin of=/dev/sdX conv=fsync,notrunc bs=512 seek=1
   ;;
 pine64)
   curl http://${ARCHLINUX_MIRROR}/os/allwinner/boot/pine64/boot.scr > root/boot/boot.scr
