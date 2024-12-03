@@ -42,7 +42,7 @@ mount $SDX2 root
 ARCHLINUX_MIRROR="nl2.mirror.archlinuxarm.org"
 ARCHLINUX_MIRROR="os.archlinuxarm.org"
 ARCHLINUX_MIRROR="dk.mirror.archlinuxarm.org"
-PLATFORM=rpi-3
+PLATFORM=rpi-aarch64
 
 curl -O http://${ARCHLINUX_MIRROR}/os/ArchLinuxARM-${PLATFORM}-latest.tar.gz
 
