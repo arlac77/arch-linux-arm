@@ -30,17 +30,17 @@ __EOF__
 
 
 mkfs.vfat $SDX1
-mkdir boot
+mkdir -p boot
 mount $SDX1 boot
 
 mkfs.ext4 $SDX2
-mkdir root
+mkdir -p root
 mount $SDX2 root
 
 ARCHLINUX_MIRROR="nl2.mirror.archlinuxarm.org"
 ARCHLINUX_MIRROR="os.archlinuxarm.org"
 ARCHLINUX_MIRROR="dk.mirror.archlinuxarm.org"
-PLATFORM=rpi-3
+PLATFORM=aarch64
 
 curl -O http://${ARCHLINUX_MIRROR}/os/ArchLinuxARM-${PLATFORM}-latest.tar.gz
 
