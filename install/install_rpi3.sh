@@ -1,6 +1,6 @@
 SDX=/dev/mmcblk1
-SDX1=/dev/mmcblk1p1
-SDX2=/dev/mmcblk1p2
+SDX1=${SDX}p1
+SDX2=${SDX}p2
 
 #SDX=/dev/mmcblk0
 #SDX1=/dev/mmcblk0p1
@@ -16,7 +16,7 @@ n
 p
 1
 
-+100M
++500M
 
 t
 c
