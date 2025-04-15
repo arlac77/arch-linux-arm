@@ -20,7 +20,7 @@ odroid8   192.168.1.2/24 192.168.1.254 00:1e:06:49:05:77 odroid-hc4         ext4
 odroid11  10.0.6.11/16   10.0.0.2      0:1e:6:10:06:11   odroid-c2          ext4_only
 pine1     10.0.6.21/16   10.0.0.2      0:1e:6:10:06:21   pine64             ext4_only
 pine2     10.0.6.22/16   10.0.0.2      0:1e:6:10:06:22   pine64             ext4_only
-pine3     10.0.6.23/16   10.0.0.2      0:1e:6:10:06:23   pine64             ext4_only
+pine3     192.168.1.7/24 192.168.1.254 0:1e:6:10:06:23   pine64             ext4_only
 rock1     10.0.6.24/16   10.0.0.2      3e:2a:57:bf:39:46 rock64             ext4_only
 rpi1      10.0.6.31/16   10.0.0.2      b8:27:eb:5c:84:bd rpi-3              vfat_ext2
 orangepi2 10.0.6.42/16   10.0.0.2      02:01:63:69:fe:74 orangepi-zero-plus ext4_only
